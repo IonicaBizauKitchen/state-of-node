@@ -1,6 +1,11 @@
 {
   "name": "state-of-node",
+  "description": "A presentation for the Heroku All-Hands meeting, Sept 18 2013.",
   "version": "0.0.1",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/zeke/state-of-node"
+  },
   "dependencies": {
     "express": "~3.3.3",
     "carousel": "0.0.2"
