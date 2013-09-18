@@ -16,9 +16,17 @@ module.exports = (grunt) ->
         src: ['src/scripts/index.coffee']
         dest: "public/scripts/index.js"
 
+    markdown2slides:
+      basic:
+        src: ['src/slides.md']
+        dest: "public/slides.html"
+
     watch:
+      markdown2slides:
+        files: ['src/*.md']
+        tasks: ['markdown2slides']
       coffeeify:
-        files: ['src/scripts/index.coffee']
+        files: ['src/scripts/*.coffee']
         tasks: ['coffeeify']
       sass:
         files: ['src/styles/*.sass']
@@ -26,5 +34,6 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'grunt-coffeeify'
   grunt.loadNpmTasks 'grunt-contrib-compass'
+  grunt.loadNpmTasks 'grunt-markdown2slides'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.registerTask 'default', ['watch']

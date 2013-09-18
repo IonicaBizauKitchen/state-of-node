@@ -1,5 +1,5 @@
 Carousel = require("carousel")
-window.carousel = new Carousel('#slides')
+window.carousel = new Carousel('.slides')
 
 $ ->
 

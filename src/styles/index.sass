@@ -1,6 +1,7 @@
 @import "media-queries"
 @import "mixins"
 
+
 // Colors
 
 $background-color: #FFF
@@ -25,6 +26,8 @@ $mobile-slide-padding: 20px
 $mobile-heading-size: 32px
 $mobile-text-size: 18px
 
+@import "scroll-fever"
+
 // Styles
 
 *
@@ -46,7 +49,7 @@ h1,h2,h3,h4,h5,h6
     text-decoration: none
     color: $heading-color
 
-ol#slides
+ol.slides
   counter-reset: slideNum
   margin: 0
   padding: 0
@@ -85,96 +88,56 @@ ol#slides
         font-size: $mobile-heading-size
         padding: $mobile-slide-padding
 
-    h2
-      margin: 0
 
-    &.titular
-      background: $heading-color
-      > h1
-        color: $background-color
-        a
-          color: $background-color
-
-    figure
-      width: 100%
-      height: 100%
-      margin: 0
-      padding: 0
-      +mobile-only
-        width: auto
+    img
+      +centered-right($desktop-slide-padding)
+      max-height: 80%
+      max-width: 50%
+      &.fullscreen
+        +centered
+        max-width: 100%
+        max-height: 100%
+      &.full-width
+        +centered
+        max-height: none
+        max-width: 100%
         height: auto
 
-      img
-        +centered-right($desktop-slide-padding)
-        max-height: 80%
-        max-width: 50%
-        &.fullscreen
-          +centered
-          max-width: 100%
-          max-height: 100%
-        &.full-width
-          +centered
-          max-height: none
-          max-width: 100%
-          height: auto
+      +mobile-only
+        +not-centered
+        +max_scale(100%)
 
-        +mobile-only
-          +not-centered
-          +max_scale(100%)
+    p
+      color: $text-color
+      font-weight: bold
+      font-size: $desktop-text-size
+      max-width: 50%
+      +centered-left($desktop-slide-padding)
+      overflow: hidden
+      padding: 5px
+      strong
+        color: darken($text-color, 20%)
+      &.fullscreen
+        max-width: 80%
+      +mobile-only
+        +not-centered
+        max-width: none
+        font-size: $mobile-text-size
+        padding: $mobile-slide-padding
 
-      figcaption
-        color: $text-color
+      code
+        color: $code-color
+        +code-font-stack
         font-weight: bold
-        font-size: $desktop-text-size
-        max-width: 50%
-        +centered-left($desktop-slide-padding)
-        overflow: hidden
-        padding: 5px
-        strong
-          color: darken($text-color, 20%)
-        &.fullscreen
-          max-width: 80%
+        font-size: $desktop-code-size
+
+      a
+        color: $link-color
+        text-decoration: none
+        border-bottom: 5px solid $link-color
         +mobile-only
-          +not-centered
-          max-width: none
-          font-size: $mobile-text-size
-          padding: $mobile-slide-padding
+          border-bottom: 1px solid $link-color
+        &:hover
+          color: $link-hover-color
+          border-bottom-color: $link-hover-color
 
-        code
-          color: $code-color
-          +code-font-stack
-          font-weight: bold
-          font-size: $desktop-code-size
-
-        a
-          color: $link-color
-          text-decoration: none
-          border-bottom: 5px solid $link-color
-          +mobile-only
-            border-bottom: 1px solid $link-color
-          &:hover
-            color: $link-hover-color
-            border-bottom-color: $link-hover-color
-
-$scroll-fever-height: 5px
-$scroll-fever-color: rgba($link-color, 0.5)
-
-$elapsis-height: 5px
-$elapsis-color: rgba($link-color, 0.3)
-
-#scroll-fever
-  position: fixed
-  top: 0
-  left: 0
-  width: 0
-  height: $scroll-fever-height
-  background: $scroll-fever-color
-
-#elapsis
-  position: fixed
-  top: $scroll-fever-height
-  left: 0
-  width: 0
-  height: $elapsis-height
-  background: $elapsis-color
-  +hidden-unless-active

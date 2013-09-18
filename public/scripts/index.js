@@ -4,7 +4,7 @@
 
   Carousel = require("carousel");
 
-  window.carousel = new Carousel('#slides');
+  window.carousel = new Carousel('.slides');
 
   $(function() {
     return FastClick.attach(document.body);
